@@ -31,9 +31,11 @@ jobs:
       - name: Configure gcloud docker
         run: |
           gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+
       - name: Setup
         run: |
           git config --global url."https://${{ secrets.GH_ACCESS_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
       - name: Build and push
         uses: docker/build-push-action@v2
         id: docker_build
