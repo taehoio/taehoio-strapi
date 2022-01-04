@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "comments",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article",
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment",
     "description": ""
   },
   "options": {
@@ -12,10 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "body": {
+    "message": {
       "type": "text"
     },
     "author": {
@@ -23,12 +20,12 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "comments": {
+    "article": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment.comment",
+      "relation": "manyToOne",
+      "target": "api::article.article",
       "private": true,
-      "mappedBy": "article"
+      "inversedBy": "comments"
     }
   }
 }
